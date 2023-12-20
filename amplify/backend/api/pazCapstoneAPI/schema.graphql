@@ -1,0 +1,91 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY {
+  globalAuthRule: AuthRule = { allow: public }
+} # FOR TESTING ONLY!
+type PersonInCharge
+  @model
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["PIC"]
+        operations: [create, update, read, delete]
+        provider: userPools
+      }
+      { allow: groups, groups: ["PM"], operations: [read], provider: userPools }
+      { allow: public, operations: [create], provider: apiKey }
+    ]
+  ) {
+  id: ID!
+  given_name: String!
+  last_name: String!
+  middle_name: String
+  is_active: Boolean
+  profile_picture: String
+  preferred_username: String!
+  email: String!
+  projectManagers: [ProjectManager] @hasMany
+}
+
+type ProjectManager
+  @model
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["PIC"]
+        operations: [create, update, read, delete]
+        provider: userPools
+      }
+      {
+        allow: groups
+        groups: ["PM"]
+        operations: [create, read, update]
+        provider: userPools
+      }
+      { allow: public, operations: [create, read], provider: apiKey }
+      {
+        allow: private
+        operations: [read, create, update, delete]
+        provider: userPools
+      }
+    ]
+  ) {
+  id: ID!
+  given_name: String!
+  last_name: String!
+  middle_name: String
+  preferred_username: String!
+  email: String!
+  is_active: Boolean
+  profile_picture: String
+  personInCharge: PersonInCharge @belongsTo
+  report: [Report] @hasMany
+}
+
+type Report
+  @model
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["PIC"]
+        operations: [create, read, update]
+        provider: userPools
+      }
+      {
+        allow: groups
+        groups: ["PM"]
+        operations: [create, read, update]
+        provider: userPools
+      }
+      { allow: private, operations: [read, create], provider: userPools }
+    ]
+  ) {
+  id: ID!
+  projectManager: ProjectManager @belongsTo
+  title: String!
+  description: String!
+  images: [String]
+}

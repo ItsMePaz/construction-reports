@@ -1,0 +1,50 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-pazcapstoneredo-dev-15611-authRole",
+      "UnauthRoleArn": "arn:aws:iam::355140267674:role/amplify-pazcapstoneredo-dev-15611-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::355140267674:role/amplify-pazcapstoneredo-dev-15611-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-pazcapstoneredo-dev-15611-deployment",
+      "UnauthRoleName": "amplify-pazcapstoneredo-dev-15611-unauthRole",
+      "StackName": "amplify-pazcapstoneredo-dev-15611",
+      "StackId": "arn:aws:cloudformation:us-east-1:355140267674:stack/amplify-pazcapstoneredo-dev-15611/940b2620-9d05-11ee-8296-122637391d49",
+      "AmplifyAppId": "d2ent65ztvalzx",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-pazcapstoneredo-dev-15611-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "pazCognitoUserPool": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "pazCognitoUserPoolPostConfirmation": {
+          "GROUP": "PIC",
+          "deploymentBucketName": "amplify-pazcapstoneredo-dev-15611-deployment",
+          "s3Key": "amplify-builds/pazCognitoUserPoolPostConfirmation-3249413458476e56756b-build.zip"
+        },
+        "AdminQueries2a8ef3e4": {
+          "deploymentBucketName": "amplify-pazcapstoneredo-dev-15611-deployment",
+          "s3Key": "amplify-builds/AdminQueries2a8ef3e4-6b4b615a765658774130-build.zip"
+        },
+        "pazCognitoUserPoolPreSignup": {
+          "deploymentBucketName": "amplify-pazcapstoneredo-dev-15611-deployment",
+          "s3Key": "amplify-builds/pazCognitoUserPoolPreSignup-4a3865534f58434d474f-build.zip"
+        }
+      },
+      "api": {
+        "AdminQueries": {},
+        "pazCapstoneAPI": {}
+      },
+      "storage": {
+        "pazCapstoneS3Bucket": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2ent65ztvalzx",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}

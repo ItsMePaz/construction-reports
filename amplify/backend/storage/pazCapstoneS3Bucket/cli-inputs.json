@@ -1,0 +1,21 @@
+{
+  "resourceName": "pazCapstoneS3Bucket",
+  "policyUUID": "63462b50",
+  "bucketName": "pazcapstone",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [],
+  "triggerFunction": "NONE",
+  "groupAccess": {
+    "PIC": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ],
+    "PM": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ]
+  }
+}

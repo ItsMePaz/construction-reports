@@ -1,0 +1,11 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1469200763880",
+      "Action": ["iam:AttachRolePolicy", "iam:CreateRole", "iam:PutUserPolicy"],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
