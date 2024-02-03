@@ -49,14 +49,14 @@ const ListProjectManagers = () => {
 
   return (
     <div>
-      {showTable ? (
+      {listOfPms.length !== 0 ? (
         <ReactTablesPMList
           pmData={listOfPms || null}
           setIsUpdated={setIsUpdated}
           isUpdated={isUpdated}
         />
       ) : (
-        <h1>Loading...</h1>
+        <h1>No project managers added yet</h1>
       )}
     </div>
   );
