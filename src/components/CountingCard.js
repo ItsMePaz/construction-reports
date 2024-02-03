@@ -118,9 +118,13 @@ const CountingCard = ({
             </Card.Header>
             <Card.Body>
               <h1>{yesterdayReports.length}</h1>
-              <p className="text-secondary">
-                Last updated: {latestReportDateFromYesterday || "Loading..."}
-              </p>
+              {yesterdayReports.length !== 0 ? (
+                <p className="text-secondary">
+                  Last updated: {latestReportDateFromYesterday || "Loading..."}
+                </p>
+              ) : (
+                <p className="text-secondary">No reports submitted yet</p>
+              )}
             </Card.Body>
           </Card>
         </Col>
@@ -130,8 +134,12 @@ const CountingCard = ({
               <Card.Title as="h4">Total Report Count</Card.Title>
             </Card.Header>
             <Card.Body>
-              <h1>{yesterdayCount || "Loading"}</h1>
-              <p className="text-secondary">Since: {oldestReportDate}</p>
+              <h1>{yesterdayCount}</h1>
+              {yesterdayCount !== 0 ? (
+                <p className="text-secondary">Since: {oldestReportDate}</p>
+              ) : (
+                <p className="text-secondary">No reports submitted yet</p>
+              )}
             </Card.Body>
           </Card>
         </Col>
