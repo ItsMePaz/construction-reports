@@ -86,7 +86,7 @@ const PMRegistration = () => {
                 <div style={{ width: "100vh" }} className="my-5">
                   <div>
                     <Form
-                      src={"https://ymzjzgouwasattu.form.io/pmregistration"}
+                      src={"https://aepvzifupjxekdl.form.io/pmregistration"}
                       onSubmit={onSubmit}
                     />
                   </div>

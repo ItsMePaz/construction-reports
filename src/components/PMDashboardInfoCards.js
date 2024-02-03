@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import * as queries from "../graphql/queries";
 import { generateClient } from "aws-amplify/api";
-import formatDate from "../utils/formatDate";
+import formatDate from "../utils/formatDateMethod";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import getCurrentUserDetails from "../services/getCurrentUserDetails";
 
