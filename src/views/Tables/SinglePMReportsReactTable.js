@@ -4,7 +4,7 @@ import { fetchAuthSession } from "aws-amplify/auth";
 import SweetAlert from "react-bootstrap-sweetalert";
 import * as queries from "../../graphql/queries";
 import ImageList from "../../components/ImageList.js";
-import formatDate from "../../utils/formatDate";
+import formatDate from "../../utils/formatDateMethod.js";
 // react-bootstrap components
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
 
@@ -150,7 +150,7 @@ function ReactTablesPM() {
           reportId: prop[0],
           title: prop[1],
           imageKeys: prop[3],
-          dateSubmitted: formatDate.formateDate(prop[4]),
+          dateSubmitted: formatDate.formatDate(prop[4]),
           description: prop[2],
           actions: (
             <div className="actions-right">

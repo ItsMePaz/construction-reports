@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import PropTypes from "prop-types";
-import format from "../utils/formatDate";
+import format from "../utils/formatDateMethod";
 import { generateClient } from "aws-amplify/api";
 import * as queries from "../graphql/queries";
 

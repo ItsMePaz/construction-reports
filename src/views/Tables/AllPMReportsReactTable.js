@@ -9,7 +9,7 @@ import * as mutations from "../../graphql/mutations.js";
 import ImageList from "../../components/ImageList.js";
 
 import PropTypes from "prop-types";
-import formatDate from "../../utils/formatDate.js";
+import formatDate from "../../utils/formatDateMethod.js";
 import getCurrentUserDetails from "../../services/getCurrentUserDetails.js";
 function ReactTables({
   yesterdayReports,
