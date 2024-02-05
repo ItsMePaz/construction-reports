@@ -22,10 +22,10 @@ function ReactTables({
 }) {
   const [data, setData] = useState([]);
   const [alert, setAlert] = React.useState(null);
-  const [isRepeat, setIsRepeat] = useState(false);
+  /*   const [isRepeat, setIsRepeat] = useState(false); */
   const [pmList, setPmList] = useState([]);
   const [triggerList, setTriggerList] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const getListOfAllReferencedPms = async () => {
     try {
       const pmData = await generateClient().graphql({
@@ -68,9 +68,9 @@ function ReactTables({
   };
 
   const selectArraysOnPreviousDay = async (inputArray) => {
-    if (inputArray.length === 0) {
+    /*  if (inputArray.length === 0) {
       setIsRepeat(!isRepeat);
-    }
+    } */
     return new Promise((resolve, reject) => {
       if (!Array.isArray(inputArray)) {
         reject("Invalid input. Expected an array.");
@@ -264,30 +264,35 @@ function ReactTables({
 
   const hideAlert = () => {
     setAlert(null);
-
-    setIsRepeat(!isRepeat);
+    /* 
+    setIsRepeat(!isRepeat); */
   };
 
-  const repeatRender = () => {
+  const fetchAllReportData = async () => {
+    await getListOfAllReferencedPms();
+    /*     await getListOfAllReports(); */
+    await getListOfAllObjectReports();
+    await selectArraysOnPreviousDay(allReportData);
+    console.log("allReportData", allReportData);
+    setIsLoading(false);
+  };
+  /*   const repeatRender = () => {
     setIsRepeat(!isRepeat);
   };
-
+ */
   useEffect(
     () => {
-      const fetchAllReportData = async () => {
-        await getListOfAllReferencedPms();
-        /*     await getListOfAllReports(); */
-        await getListOfAllObjectReports();
-        await selectArraysOnPreviousDay(allReportData);
-      };
+      setIsLoading(true);
       fetchAllReportData();
-      if (pmList.length === 0) {
+      /*   if (pmList.length === 0) {
         repeatRender();
-      }
+      } */
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isRepeat]
+    [
+      /* isRepeat */
+    ]
   );
 
   useEffect(() => {
@@ -348,14 +353,14 @@ function ReactTables({
         };
       })
     );
-    if (data.length === 0) {
+    /*   if (data.length === 0) {
       repeatRender();
     }
     if (allReportData.length === 0) {
       repeatRender();
-    }
+    } */
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isRepeat]);
+  }, [/* isRepeat */ allReportData]);
 
   return (
     <>

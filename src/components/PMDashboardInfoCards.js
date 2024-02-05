@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import * as queries from "../graphql/queries";
 import { generateClient } from "aws-amplify/api";
-import formatDate from "../utils/formatDateMethod";
+import formatDateMethod from "../utils/formatDateMethod";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import getCurrentUserDetails from "../services/getCurrentUserDetails";
 
@@ -44,10 +44,11 @@ const PMDashBoardInfoCards = () => {
         }
       }, null);
 
-      const recentCreatedReportDate = formatDate(mostRecentDate);
+      const recentCreatedReportDate =
+        formatDateMethod.formatDate(mostRecentDate);
 
       setRecentReportDate(recentCreatedReportDate || " ");
-
+      console.log("Report Count", reports.data.listReports.items.length);
       setReportCount(reports.data.listReports.items.length);
     } catch (error) {
       console.log(error);
@@ -96,7 +97,7 @@ const PMDashBoardInfoCards = () => {
         <Col md="5">
           <Card>
             <Card.Header>
-              <Card.Title as="h4">Total Report Sent</Card.Title>
+              <Card.Title as="h4">Total Report Sent.</Card.Title>
             </Card.Header>
             <Card.Body>
               <h1>{reportCount}</h1>
