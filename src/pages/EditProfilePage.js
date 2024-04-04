@@ -48,7 +48,7 @@ const EditProfilePage = () => {
                 <div style={{ width: "100vh" }} className="my-5">
                   <div>
                     <Form
-                      src={"https://aepvzifupjxekdl.form.io/updateuserprofile"}
+                      src={"https://txldmjvisxedgls.form.io/updateuserprofile"}
                       onSubmit={onSubmit}
                     />
                   </div>
@@ -73,7 +73,7 @@ const EditProfilePage = () => {
                 <div style={{ width: "100vh" }} className="my-5">
                   <div>
                     <Form
-                      src={"https://aepvzifupjxekdl.form.io/updatepassword"}
+                      src={"https://txldmjvisxedgls.form.io/updatepassword"}
                       onSubmit={onSubmitPassword}
                     />
                   </div>
