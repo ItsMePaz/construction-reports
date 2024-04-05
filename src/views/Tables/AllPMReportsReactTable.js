@@ -17,7 +17,6 @@ function ReactTables({
   setProjectManagerCount,
   allReportData,
   setAllReportData,
-
   setCurrentUSerPICId,
 }) {
   const [data, setData] = useState([]);
@@ -264,95 +263,104 @@ function ReactTables({
 
   const hideAlert = () => {
     setAlert(null);
-    /* 
-    setIsRepeat(!isRepeat); */
   };
 
   const fetchAllReportData = async () => {
     await getListOfAllReferencedPms();
-    /*     await getListOfAllReports(); */
     await getListOfAllObjectReports();
     await selectArraysOnPreviousDay(allReportData);
     console.log("allReportData", allReportData);
     setIsLoading(false);
   };
-  /*   const repeatRender = () => {
-    setIsRepeat(!isRepeat);
-  };
- */
+
   useEffect(
     () => {
-      setIsLoading(true);
-      fetchAllReportData();
-      /*   if (pmList.length === 0) {
-        repeatRender();
-      } */
+      const fetchData = async () => {
+        setIsLoading(true);
+        await fetchAllReportData();
+      };
+
+      fetchData();
+
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       /* isRepeat */
     ]
   );
 
   useEffect(() => {
-    setData(
-      allReportData.map((prop, key) => {
-        return {
-          id: key,
-          reportId: prop[0] || "",
-          title: prop[1] || "",
-          imageKeys: prop[3] || [],
-          dateSubmitted: formatDate.formatDate(prop[4]) || "",
-          description: prop[2] || "",
-          projectManagerName: getProjectManagerName(prop[6]) || "Loading...",
-          projectManagerEmail: getProjectManagerEmail(prop[6]) || "",
+    if (allReportData.length > 0) {
+      setData(
+        allReportData.map((prop, key) => {
+          const propId = key;
+          const propReportId = prop[0] || "";
+          const propTitle = prop[1] || "";
+          const propImageKeys = prop[3] || [];
+          const propDateSubmitted = formatDate.formatDate(prop[4]) || "";
+          const propDescription = prop[2] || "";
+          const propProjectManagerId = prop[6] || "";
+          const propProjectManagerName =
+            getProjectManagerName(propProjectManagerId) || "Loading...";
+          const propProjectManagerEmail =
+            getProjectManagerEmail(propProjectManagerId) || "";
+          return {
+            id: key,
+            reportId: prop[0] || "",
+            title: prop[1] || "",
+            imageKeys: prop[3] || [],
+            dateSubmitted: formatDate.formatDate(prop[4]) || "",
+            description: prop[2] || "",
+            projectManagerName: getProjectManagerName(prop[6]) || "Loading...",
+            projectManagerEmail: getProjectManagerEmail(prop[6]) || "",
 
-          actions: (
-            <div className="actions-right">
-              <Button
-                onClick={() => {
-                  let obj = data.find((o) => o.id === key);
+            actions: (
+              <div className="actions-right">
+                <Button
+                  onClick={() => {
+                    /*  let obj = data.find((o) => o.id === key); */
 
-                  titleAndTextAlert(
-                    obj.title,
-                    obj.description,
-                    obj.imageKeys,
-                    obj.dateSubmitted,
-                    obj.reportId,
-                    obj.projectManagerName,
-                    obj.projectManagerEmail
-                  );
-                }}
-                variant="warning"
-                size="sm"
-                className="text-success btn-link edit"
-                title="View"
-              >
-                <i className="fa fa-magnifying-glass" />
-              </Button>{" "}
-              <Button
-                onClick={() => {
-                  let obj = data.find((o) => o.id === prop[0]);
+                    titleAndTextAlert(
+                      propTitle,
+                      propDescription,
+                      propImageKeys,
+                      propDateSubmitted,
+                      propReportId,
+                      propProjectManagerName,
+                      propProjectManagerEmail
+                    );
+                  }}
+                  variant="warning"
+                  size="sm"
+                  className="text-success btn-link edit"
+                  title="View"
+                >
+                  <i className="fa fa-magnifying-glass" />
+                </Button>{" "}
+                {/*  <Button
+                  onClick={() => {
+                    let obj = data.find((o) => o.id === prop[0]);
 
-                  warningWithConfirmAndCancelMessage(
-                    obj.id,
-                    obj.name,
-                    obj.email
-                  );
-                }}
-                variant="danger"
-                size="sm"
-                className="btn-link remove text-danger"
-                title="Delete"
-              >
-                <i className="fa fa-times" />
-              </Button>{" "}
-            </div>
-          ),
-        };
-      })
-    );
+                    warningWithConfirmAndCancelMessage(
+                      propId,
+                      propProjectManagerName,
+                      propProjectManagerEmail
+                    );
+                  }}
+                  variant="danger"
+                  size="sm"
+                  className="btn-link remove text-danger"
+                  title="Delete"
+                >
+                  <i className="fa fa-times" />
+                </Button>{" "} */}
+              </div>
+            ),
+          };
+        })
+      );
+    }
+
     /*   if (data.length === 0) {
       repeatRender();
     }
